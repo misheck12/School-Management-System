@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_21_223554) do
+ActiveRecord::Schema.define(version: 2017_09_23_025443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,16 +70,6 @@ ActiveRecord::Schema.define(version: 2023_12_21_223554) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "parent_whatsapp_numbers", force: :cascade do |t|
-    t.bigint "parent_id"
-    t.string "phone_number"
-    t.boolean "is_primary", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["parent_id"], name: "index_parent_whatsapp_numbers_on_parent_id"
-    t.index ["phone_number"], name: "index_parent_whatsapp_numbers_on_phone_number", unique: true
   end
 
   create_table "parents", force: :cascade do |t|
@@ -188,5 +178,4 @@ ActiveRecord::Schema.define(version: 2023_12_21_223554) do
   add_foreign_key "classrooms", "teachers"
   add_foreign_key "courses", "grades"
   add_foreign_key "exams", "exam_categories"
-  add_foreign_key "parent_whatsapp_numbers", "parents"
 end
